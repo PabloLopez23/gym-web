@@ -134,7 +134,7 @@ const plans = [
 const gallery = [
   "matos-gallery-1.webp",
   "matos-gallery-2.webp",
-  "matos-gallery-3-v3.webp",
+  "matos-gallery-3-v4.webp",
   "matos-gallery-4-v3.webp",
   "matos-gallery-5-v2.webp",
   "matos-gallery-6.webp"
@@ -402,25 +402,22 @@ export default function Home() {
         </span>
       </section>
 
-      <section className="benefits-section">
-        <div className="section-copy">
-          <p className="eyebrow">Sentite bien,</p>
-          <h2>entrená mejor.</h2>
-          <p>
-            Una propuesta directa para personas que quieren entrenar con guía,
-            mejorar hábitos y tener un lugar claro al cual volver cada semana.
-          </p>
-          <div className="benefit-grid">
-            {benefits.map(({ icon: Icon, title, text }) => (
-              <article key={title}>
-                <Icon size={34} />
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
+      <section className="gallery" id="gallery">
+        <div className="section-heading">
+          <p className="eyebrow">Nuestro gimnasio</p>
+          <h2>Galería de fotos</h2>
         </div>
-        <Image src={img("sentite-bien-v2.webp")} alt="Mujer entrenando fuerza en MATOS GYM" width={900} height={1001} />
+        <div className="gallery-grid">
+          {gallery.map((photo, index) => (
+            <Image
+              key={photo}
+              src={img(photo)}
+              alt={`Instalaciones y entrenamiento en MATOS GYM, foto ${index + 1}`}
+              width={600}
+              height={600}
+            />
+          ))}
+        </div>
       </section>
 
       <section className="split-band">
@@ -442,7 +439,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <Image src={img("s2-v2.webp")} alt="Pesas dentro del gimnasio" width={600} height={500} />
+        <Image src={img("s2-v3.webp")} alt="Pesas dentro del gimnasio" width={600} height={500} />
       </section>
 
       <section className="classes" id="classes">
@@ -569,22 +566,25 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="gallery" id="gallery">
-        <div className="section-heading">
-          <p className="eyebrow">Nuestro gimnasio</p>
-          <h2>Galería de fotos</h2>
+      <section className="benefits-section">
+        <div className="section-copy">
+          <p className="eyebrow">Sentite bien,</p>
+          <h2>entrená mejor.</h2>
+          <p>
+            Una propuesta directa para personas que quieren entrenar con guía,
+            mejorar hábitos y tener un lugar claro al cual volver cada semana.
+          </p>
+          <div className="benefit-grid">
+            {benefits.map(({ icon: Icon, title, text }) => (
+              <article key={title}>
+                <Icon size={34} />
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
         </div>
-        <div className="gallery-grid">
-          {gallery.map((photo, index) => (
-            <Image
-              key={photo}
-              src={img(photo)}
-              alt={`Instalaciones y entrenamiento en MATOS GYM, foto ${index + 1}`}
-              width={600}
-              height={600}
-            />
-          ))}
-        </div>
+        <Image src={img("sentite-bien-v2.webp")} alt="Mujer entrenando fuerza en MATOS GYM" width={900} height={1001} />
       </section>
 
       <footer id="contact">
