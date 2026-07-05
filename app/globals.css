@@ -41,6 +41,51 @@ main {
   overflow: hidden;
 }
 
+@keyframes headerEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -18px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes brandEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -26px, 0) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes whatsappPulse {
+  0%,
+  100% {
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.38), 0 0 0 0 rgba(24, 209, 95, 0.38);
+  }
+
+  50% {
+    box-shadow: 0 20px 46px rgba(0, 0, 0, 0.46), 0 0 0 13px rgba(24, 209, 95, 0);
+  }
+}
+
+@keyframes heroBreath {
+  from {
+    background-size: auto 100%;
+  }
+
+  to {
+    background-size: auto 103%;
+  }
+}
+
 .site-header {
   position: fixed;
   top: 0;
@@ -865,6 +910,185 @@ footer h2 {
   border-radius: 50%;
   object-fit: contain;
   object-position: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-header {
+    animation: headerEnter 520ms ease both;
+  }
+
+  .brand {
+    animation: brandEnter 720ms cubic-bezier(0.2, 0.8, 0.2, 1) 120ms both;
+  }
+
+  .reveal-item {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translate3d(0, 34px, 0) scale(0.985);
+    transition:
+      opacity 700ms ease,
+      filter 700ms ease,
+      transform 760ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal-item.is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .pass-button,
+  .primary-action,
+  .secondary-action,
+  .class-card a,
+  .plan-grid a,
+  .video-link,
+  .map-link,
+  .social-card a {
+    transition:
+      background-color 240ms ease,
+      border-color 240ms ease,
+      box-shadow 240ms ease,
+      color 240ms ease,
+      transform 240ms ease;
+  }
+
+  .pass-button svg,
+  .primary-action svg,
+  .secondary-action svg,
+  .class-card a svg,
+  .plan-grid a svg,
+  .video-link svg,
+  .map-link svg,
+  .social-card a svg {
+    transition: transform 240ms ease;
+  }
+
+  .pass-button:hover,
+  .primary-action:hover,
+  .class-card a:hover,
+  .plan-grid a:hover {
+    box-shadow: 0 16px 34px rgba(19, 240, 160, 0.22);
+    transform: translate3d(0, -2px, 0);
+  }
+
+  .secondary-action:hover,
+  .video-link:hover,
+  .map-link:hover,
+  .social-card a:hover {
+    color: var(--accent);
+    transform: translate3d(0, -2px, 0);
+  }
+
+  .pass-button:hover svg,
+  .primary-action:hover svg,
+  .secondary-action:hover svg,
+  .class-card a:hover svg,
+  .plan-grid a:hover svg,
+  .video-link:hover svg,
+  .map-link:hover svg,
+  .social-card a:hover svg {
+    transform: translate3d(5px, 0, 0);
+  }
+
+  .video-image,
+  .class-card {
+    overflow: hidden;
+  }
+
+  .video-image img,
+  .class-card img,
+  .benefits-section > img,
+  .split-band img,
+  .gallery-grid img {
+    transition:
+      filter 650ms ease,
+      transform 750ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .video-image:hover img,
+  .class-card:hover img,
+  .benefits-section > img:hover,
+  .split-band img:hover,
+  .gallery-grid img:hover {
+    filter: saturate(1.08) contrast(1.05);
+    transform: scale(1.045);
+  }
+
+  .benefit-grid article,
+  .stats div,
+  .class-card,
+  .social-card,
+  .profile-facts span,
+  .method-grid article,
+  .plan-grid article,
+  .visit-card {
+    transition:
+      background-color 280ms ease,
+      border-color 280ms ease,
+      box-shadow 280ms ease,
+      transform 280ms ease;
+  }
+
+  .benefit-grid article:hover,
+  .stats div:hover,
+  .class-card:hover,
+  .social-card:hover,
+  .profile-facts span:hover,
+  .method-grid article:hover,
+  .plan-grid article:hover,
+  .visit-card:hover {
+    border-color: rgba(19, 240, 160, 0.34);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.24);
+    transform: translate3d(0, -7px, 0);
+  }
+
+  .benefit-grid svg,
+  .method-grid svg,
+  .social-card-head svg {
+    transition: transform 280ms ease;
+  }
+
+  .benefit-grid article:hover svg,
+  .method-grid article:hover svg,
+  .social-card:hover svg {
+    transform: rotate(-5deg) scale(1.08);
+  }
+
+  .stats div:hover strong,
+  .plan-grid article:hover strong,
+  .social-card:hover strong {
+    color: #f4ff72;
+  }
+
+  .whatsapp-float {
+    animation: whatsappPulse 2.8s ease-in-out infinite;
+  }
+}
+
+@media (min-width: 981px) and (prefers-reduced-motion: no-preference) {
+  .hero {
+    animation: heroBreath 9s ease-in-out infinite alternate;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-item,
+  .reveal-item.is-visible {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+
+  .whatsapp-float {
+    animation: none;
+  }
 }
 
 @media (max-width: 1180px) {

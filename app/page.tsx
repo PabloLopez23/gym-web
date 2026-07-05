@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect } from "react";
 import {
   ArrowRight,
   Dumbbell,
@@ -230,7 +231,63 @@ const businessJsonLd = {
 
 const businessJsonLdMarkup = JSON.stringify(businessJsonLd).replace(/</g, "\\u003c");
 
+const revealSelectors = [
+  ".hero-copy",
+  ".video-image",
+  ".hero-card",
+  ".section-copy",
+  ".benefits-section > img",
+  ".benefit-grid article",
+  ".split-band > img",
+  ".split-band > div",
+  ".section-heading",
+  ".class-card",
+  ".join-band",
+  ".social-card",
+  ".profile-facts span",
+  ".method-grid article",
+  ".plan-grid article",
+  ".visit-band > div",
+  ".visit-card",
+  ".gallery-grid img",
+  "footer > div"
+].join(",");
+
 export default function Home() {
+  useEffect(() => {
+    const animatedItems = Array.from(document.querySelectorAll<HTMLElement>(revealSelectors));
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      animatedItems.forEach((item) => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.16
+      }
+    );
+
+    animatedItems.forEach((item, index) => {
+      item.classList.add("reveal-item");
+      item.style.setProperty("--reveal-delay", `${(index % 6) * 70}ms`);
+      observer.observe(item);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main>
       <script
