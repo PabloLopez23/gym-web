@@ -420,7 +420,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <Image src={img("s2.webp")} alt="Pesas dentro del gimnasio" width={600} height={500} />
+        <Image src={img("sentite-bien.webp")} alt="Mujer entrenando fuerza en MATOS GYM" width={900} height={1001} />
       </section>
 
       <section className="split-band">
