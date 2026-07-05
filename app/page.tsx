@@ -135,7 +135,7 @@ const gallery = [
   "matos-gallery-1.webp",
   "matos-gallery-2.webp",
   "matos-gallery-3-v3.webp",
-  "matos-gallery-4-v2.webp",
+  "matos-gallery-4-v3.webp",
   "matos-gallery-5-v2.webp",
   "matos-gallery-6.webp"
 ];
@@ -420,7 +420,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <Image src={img("sentite-bien.webp")} alt="Mujer entrenando fuerza en MATOS GYM" width={900} height={1001} />
+        <Image src={img("sentite-bien-v2.webp")} alt="Mujer entrenando fuerza en MATOS GYM" width={900} height={1001} />
       </section>
 
       <section className="split-band">
@@ -442,7 +442,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <Image src={img("s2.webp")} alt="Pesas dentro del gimnasio" width={600} height={500} />
+        <Image src={img("s2-v2.webp")} alt="Pesas dentro del gimnasio" width={600} height={500} />
       </section>
 
       <section className="classes" id="classes">
