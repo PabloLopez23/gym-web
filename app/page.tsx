@@ -134,9 +134,9 @@ const plans = [
 const gallery = [
   "matos-gallery-1.webp",
   "matos-gallery-2.webp",
-  "matos-gallery-3.webp",
+  "matos-gallery-3-v2.webp",
   "matos-gallery-4-v2.webp",
-  "matos-gallery-5.webp",
+  "matos-gallery-5-v2.webp",
   "matos-gallery-6.webp"
 ];
 
