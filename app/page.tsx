@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 const img = (name: string) => `/assets/optimized/${name}`;
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://gym-web.netlify.app").replace(/\/$/, "");
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://matosgym.netlify.app").replace(/\/$/, "");
 const whatsappPhone = "5493794592965";
 const whatsappMessage = (message: string) =>
   `https://web.whatsapp.com/send?phone=${whatsappPhone}&text=${encodeURIComponent(message)}`;

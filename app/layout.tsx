@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://gym-web.netlify.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://matosgym.netlify.app";
 const siteName = "MATOS GYM";
 const seoTitle = "MATOS GYM | Gimnasio en Saladas, Corrientes";
 const seoDescription =
