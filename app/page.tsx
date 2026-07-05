@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 const img = (name: string) => `/assets/optimized/${name}`;
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://gym-web.netlify.app").replace(/\/$/, "");
 const whatsappPhone = "5493794592965";
 const whatsappMessage = (message: string) =>
   `https://web.whatsapp.com/send?phone=${whatsappPhone}&text=${encodeURIComponent(message)}`;
@@ -171,9 +172,71 @@ const visitFacts = [
   ["Horarios", "Consultá disponibilidad por WhatsApp"]
 ];
 
+const businessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ExerciseGym",
+  "@id": `${siteUrl}/#matos-gym`,
+  name: "MATOS GYM",
+  url: siteUrl,
+  logo: `${siteUrl}${img("matos-logo.webp")}`,
+  image: [`${siteUrl}${img("hero-1.webp")}`, `${siteUrl}${img("matos-logo.webp")}`],
+  description:
+    "Gimnasio en Saladas, Corrientes, con entrenamiento grupal, personalizado y asesoramiento online.",
+  telephone: "+5493794592965",
+  email,
+  priceRange: "$30.000 - $60.000 ARS",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Avenida Pujol 1741",
+    addressLocality: "Saladas",
+    addressRegion: "Corrientes",
+    addressCountry: "AR"
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Saladas, Corrientes"
+  },
+  sameAs: [instagramHref, facebookHref],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "Atención por WhatsApp",
+    telephone: "+5493794592965",
+    areaServed: "AR",
+    availableLanguage: "Spanish"
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Planes de entrenamiento MATOS GYM",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Entrenamiento grupal",
+        price: "30000",
+        priceCurrency: "ARS",
+        availability: "https://schema.org/InStock",
+        url: `${siteUrl}/#membership`
+      },
+      {
+        "@type": "Offer",
+        name: "Entrenamiento personalizado",
+        price: "60000",
+        priceCurrency: "ARS",
+        availability: "https://schema.org/InStock",
+        url: `${siteUrl}/#membership`
+      }
+    ]
+  }
+};
+
+const businessJsonLdMarkup = JSON.stringify(businessJsonLd).replace(/</g, "\\u003c");
+
 export default function Home() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: businessJsonLdMarkup }}
+      />
       <header className="site-header">
         <a className="brand" href="#home" aria-label="Inicio de MATOS GYM">
           <Image src={img("matos-logo.webp")} alt="MATOS GYM" width={180} height={180} priority />
@@ -455,8 +518,14 @@ export default function Home() {
           <h2>Galería de fotos</h2>
         </div>
         <div className="gallery-grid">
-          {gallery.map((photo) => (
-            <Image key={photo} src={img(photo)} alt="Galería del gimnasio" width={600} height={600} />
+          {gallery.map((photo, index) => (
+            <Image
+              key={photo}
+              src={img(photo)}
+              alt={`Instalaciones y entrenamiento en MATOS GYM, foto ${index + 1}`}
+              width={600}
+              height={600}
+            />
           ))}
         </div>
       </section>
@@ -492,7 +561,9 @@ export default function Home() {
             title="Ubicación de MATOS GYM"
             src={mapSrc}
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
+            referrerPolicy="strict-origin-when-cross-origin"
+            sandbox="allow-scripts allow-same-origin allow-popups"
+            allow="fullscreen"
           />
           <a className="map-link" href={mapDirectionsHref} target="_blank" rel="noopener noreferrer">
             Abrir ubicación en Google Maps <MapPin size={17} />
