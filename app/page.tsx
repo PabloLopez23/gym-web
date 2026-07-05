@@ -132,12 +132,12 @@ const plans = [
 ];
 
 const gallery = [
-  "g1-600x600.webp",
-  "g4-600x600.webp",
-  "g2-600x600.webp",
-  "g3-600x600.webp",
-  "g5-600x600.webp",
-  "g6-600x600.webp"
+  "matos-gallery-1.webp",
+  "matos-gallery-2.webp",
+  "matos-gallery-3.webp",
+  "matos-gallery-4.webp",
+  "matos-gallery-5.webp",
+  "matos-gallery-6.webp"
 ];
 
 const socialProfiles = [
