@@ -626,6 +626,7 @@ export default function Home() {
             Abrir ubicación en Google Maps <MapPin size={17} />
           </a>
         </div>
+        <p className="footer-copyright">© 2026 MATOS GYM. Todos los derechos reservados.</p>
       </footer>
 
       <a

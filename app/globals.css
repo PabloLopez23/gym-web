@@ -878,6 +878,14 @@ footer h2 {
   font-weight: 700;
 }
 
+.footer-copyright {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
 .header-socials a,
 .socials a {
   display: inline-flex;
